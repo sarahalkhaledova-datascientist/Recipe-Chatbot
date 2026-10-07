@@ -89,11 +89,10 @@ def reset_chat():
 # ---------- الشريط الجانبي ----------
 with st.sidebar:
     st.header("Settings")
-    api_key = st.text_input(
-        "Groq API key",
+    user_key = st.text_input(
+        "Groq API key (optional)",
         type="password",
-        value=os.environ.get("GROQ_API_KEY", ""),
-        help="Get one from console.groq.com/keys",
+        help="Leave empty to use the app's built-in key",
     )
     st.caption(f"Model: `{LLM_MODEL}`")
     st.caption(f"Recipes in index: {len(sample):,}")
@@ -107,6 +106,13 @@ with st.sidebar:
         "- how do I make the first one?"
     )
 
+def get_server_key():
+    try:
+        return st.secrets["GROQ_API_KEY"]
+    except Exception:
+        return os.environ.get("GROQ_API_KEY", "")
+
+api_key = user_key or get_server_key()
 
 # ---------- الواجهة ----------
 st.title("🍳 Recipe Chatbot")
