@@ -29,8 +29,8 @@ st.set_page_config(page_title="Recipe Chatbot", page_icon="🍳")
 # ---------- تحميل البيانات والنموذج (مرة وحدة فقط) ----------
 @st.cache_resource(show_spinner="Loading recipes and embedding model...")
 def load_resources():
-    sample = pd.read_parquet(DATA_DIR / "recipes_sample.parquet")
-    embeddings = np.load(DATA_DIR / "embeddings.npy")
+    sample = pd.read_parquet(DATA_DIR / "recipes_slim.parquet")
+    embeddings = np.load(DATA_DIR / "embeddings_f16.npy")
     model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
     return sample, embeddings, model
 
