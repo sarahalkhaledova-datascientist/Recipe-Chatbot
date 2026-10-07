@@ -27,6 +27,10 @@ st.set_page_config(page_title="Recipe Chatbot", page_icon="🍳")
 
 
 # ---------- تحميل البيانات والنموذج (مرة وحدة فقط) ----------
+
+st.write("DATA_DIR:", str(DATA_DIR), "exists:", DATA_DIR.exists())
+st.write("Repo files:", sorted(p.name for p in DATA_DIR.parent.iterdir()))
+
 @st.cache_resource(show_spinner="Loading recipes and embedding model...")
 def load_resources():
     sample = pd.read_parquet(DATA_DIR / "recipes_slim.parquet")
