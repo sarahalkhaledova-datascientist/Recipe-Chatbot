@@ -9,7 +9,7 @@ from groq import Groq
 from sentence_transformers import SentenceTransformer
 
 # ---------- الإعدادات ----------
-DATA_DIR = Path(__file__).parent / "Data"
+DATA_DIR = Path(__file__).parent 
 LLM_MODEL = "openai/gpt-oss-20b"
 MIN_SCORE = 0.35
 TOP_K = 3
