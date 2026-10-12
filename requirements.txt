@@ -1,6 +1,8 @@
 streamlit
-groq
+llama-index-core
+llama-index-llms-groq
 sentence-transformers
 pandas
 pyarrow
 numpy
+python-dotenv
